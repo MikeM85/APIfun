@@ -35,7 +35,7 @@ $("#addthing").on("click", function(){
 function displayGifs(){
     var thing = $(this).attr("data-name");
 // "http://api.giphy.com/v1/gifs/search?q="++"&api_key=YOUR_API_KEY&limit=5"
-var queryURL = "https://api.giphy.com/v1/gifs/search?q="+ thing +"&api_key=6CRX0slKPw457On49DYPweUDH253vmuF&limit=5";
+var queryURL = "https://api.giphy.com/v1/gifs/search?q="+ thing +"&api_key=6CRX0slKPw457On49DYPweUDH253vmuF&limit=10";
     $.ajax({
         url: queryURL,
         method: "GET"
@@ -60,18 +60,39 @@ var queryURL = "https://api.giphy.com/v1/gifs/search?q="+ thing +"&api_key=6CRX0
             // result item
             personImage.attr("src", results[i].images.fixed_height.url);
 
+            personImage.attr('data-still', results[i].images.fixed_height_still.url);
+            personImage.attr('data-state', 'still');
+            personImage.addClass('gif');
+            personImage.attr('data-animate', results[i].images.fixed_height.url);
+
             // Appending the personImage to the "gifDiv" div we created
             
             gifDiv.append(personImage);
 
             // Prepending the gifDiv to the "#gifs-appear-here" div in the HTML
             $("#gifsView").prepend(gifDiv);
-        
+            console.log("#gifsView")
           
         }
       });
+    }
+
+// function for animating gifs
+$(document).on('click', '.gif', function(){
+	var state = $(this).attr('data-state');
+		if ( state == 'still'){
+                $(this).attr('src', $(this).data('animate'));
+                $(this).attr('data-state', 'animate');
+            }else{
+                $(this).attr('src', $(this).data('still'));
+                $(this).attr('data-state', 'still');
+            };
+});
     
-}
+
+
+
+
 // starts displayGif function on click
 $(document).on("click",".thing", displayGifs);
 // initially calls the makeButtons function
