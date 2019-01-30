@@ -4,14 +4,30 @@ body {
 	text-align: center;
 	font-family: 'Open Sans', sans-serif;
 	text-transform: uppercase;
+	background-image: url("../assets/castle.jpg");
+	background-size: cover;
 }
 
 .container {
-	width: ;
+	
+                height:auto;
+                width:auto;
+     
+                background-position:center center;
+                background-repeat:no-repeat;
+                background-clip:content-box;
+	background-image: url("../assets/unicorns.jpg");
+	
+}
+
+label{
+	color: lightcoral;
+	font-size: 30px;
+	
 }
 
 h1 {
-	
+	font-family: cursive;
 	font-size: 55px;
 	
 }
@@ -26,49 +42,28 @@ form {
 	color: black;
 }
 
-#buttonsView {
-	display: inline;
-}
 
 .gifs {
-	display: inline;
+	/* display: inline; */
+	float: left;
 }
 
-#gifsView {
-	display: inline;
-	margin-bottom: 40px;
-}
+
 
 .gif {
-	
+	/* float: left; */
+	cursor: pointer;
 }
 
-img.allImages {
-	top:0;
-	left:0;
-}
 
-#show-form {
-	display: inline;
-}
 
 button {
-	
+	cursor: pointer;
 	margin: 5px;
-	
+	font-family: fantasy;
 	color: black;
 }
 
-textarea:focus {
-  border-bottom: 2px solid #fff;
-  -webkit-box-shadow: 0 2px 0 0 #fff;
-  -moz-box-shadow: 0 2px 0 0 #fff;
-  box-shadow: 0 2px 0 0 #fff;
-}
-
-.waves-effect {
-	top: 15px;
-}
 
 /* border */
 #top,
