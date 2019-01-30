@@ -40,56 +40,67 @@ var queryURL = "https://api.giphy.com/v1/gifs/search?q="+ thing +"&api_key=6CRX0
         url: queryURL,
         method: "GET"
       })
-      
       // After the data comes back from the API
       .then(function(response) {
-        console.log(thing);
+        console.log(response);
+        // console.log(thing);
         // Storing an array of results in the results variable
         var results = response.data;
+        
         
         // Looping over every result item
         for (var i = 0; i < results.length; i++) {
 
-        //     // Creating a div for the gif
-            var gifDiv = $("<div>");
+             // Storing the result item's rating
+             var rating = results[i].rating;
 
-            // Creating an image tag
+             // Creating a paragraph tag with the result item's rating
+             var p = $("<p>").text("Rating: " + rating);
+
+            
+        //     // Creating a div for the gif
+            var gifDiv = $("<div class=gifs>");
+
+             // Creating an image tag
             var personImage = $("<img>");
 
             // Giving the image tag an src attribute of a proprty pulled off the
             // result item
             personImage.attr("src", results[i].images.fixed_height.url);
-
             personImage.attr('data-still', results[i].images.fixed_height_still.url);
             personImage.attr('data-state', 'still');
             personImage.addClass('gif');
             personImage.attr('data-animate', results[i].images.fixed_height.url);
-
-            // Appending the personImage to the "gifDiv" div we created
             
+            // Appending the personImage to the div 
             gifDiv.append(personImage);
-
-            // Prepending the gifDiv to the "#gifs-appear-here" div in the HTML
+            // appending rating to p
+            gifDiv.append(p);
+            
+            // Prepending the gifDiv to the div in the HTML
             $("#gifsView").prepend(gifDiv);
-            console.log("#gifsView")
-          
+            // console.log("#gifsView")
+            
+            
         }
       });
     }
 
-// function for animating gifs
-$(document).on('click', '.gif', function(){
-	var state = $(this).attr('data-state');
-		if ( state == 'still'){
-                $(this).attr('src', $(this).data('animate'));
-                $(this).attr('data-state', 'animate');
-            }else{
-                $(this).attr('src', $(this).data('still'));
-                $(this).attr('data-state', 'still');
-            };
-});
+    $(document).on("click", ".gif", function() {
+        // The attr jQuery method allows us to get or set the value of any attribute on our HTML element
+        var state = $(this).attr("data-state");
+        // If the clicked image's state is still, update its src attribute to what its data-animate value is.
+        // Then, set the image's data-state to animate
+        // Else set src to the data-still value
+        if (state === "still") {
+          $(this).attr("src", $(this).attr("data-animate"));
+          $(this).attr("data-state", "animate");
+        } else {
+          $(this).attr("src", $(this).attr("data-still"));
+          $(this).attr("data-state", "still");
+        }
+      });
     
-
 
 
 
