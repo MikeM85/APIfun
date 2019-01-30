@@ -1,5 +1,5 @@
 // create an array of things to be displahyed
-var apiThing = ["Stuff", "Thing", "Other"];
+var apiThing = ["Stuff", "Things", "Other", "Cupcakes!"];
 
 // creates buttons for each of these
 function makeButtons(){ 
@@ -53,9 +53,13 @@ var queryURL = "https://api.giphy.com/v1/gifs/search?q="+ thing +"&api_key=6CRX0
 
              // Storing the result item's rating
              var rating = results[i].rating;
+            // storing result for title
+             var title = results[i].title;
 
              // Creating a paragraph tag with the result item's rating
              var p = $("<p>").text("Rating: " + rating);
+            // creating p tag with the result for item title
+             var p2 = $("<p>").text("Title: " + title);
 
             
         //     // Creating a div for the gif
@@ -76,6 +80,8 @@ var queryURL = "https://api.giphy.com/v1/gifs/search?q="+ thing +"&api_key=6CRX0
             gifDiv.append(personImage);
             // appending rating to p
             gifDiv.append(p);
+            // appends title to p2 
+            gifDiv.append(p2);
             
             // Prepending the gifDiv to the div in the HTML
             $("#gifsView").prepend(gifDiv);
