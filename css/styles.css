@@ -6,22 +6,24 @@ body {
 	text-transform: uppercase;
 	background-image: url("../assets/castle.jpg");
 	background-size: cover;
+	background-repeat: no-repeat;
 }
 
-.container {
+#titleImage{
 	
-                height:auto;
-                width:auto;
-     
-                background-position:center center;
-                background-repeat:no-repeat;
-                background-clip:content-box;
-	background-image: url("../assets/unicorns.jpg");
-	
+	height:auto;
+	width:auto;
+
+	background-position:center center;
+	background-repeat:no-repeat;
+	background-clip:content-box;
+background-image: url("../assets/unicorns.jpg");
+
 }
+
 
 label{
-	color: lightcoral;
+	color: black;
 	font-size: 30px;
 	
 }
@@ -44,14 +46,14 @@ form {
 
 
 .gifs {
-	/* display: inline; */
+	
 	float: left;
 }
 
 
 
 .gif {
-	/* float: left; */
+	
 	cursor: pointer;
 }
 
