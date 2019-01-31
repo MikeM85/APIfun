@@ -60,28 +60,24 @@ var queryURL = "https://api.giphy.com/v1/gifs/search?q="+ thing +"&api_key=6CRX0
              var p = $("<p>").text("Rating: " + rating);
             // creating p tag with the result for item title
              var p2 = $("<p>").text("Title: " + title);
-
-            
-        //     // Creating a div for the gif
+            // Creating a div for the gif
             var gifDiv = $("<div class=gifs>");
-
              // Creating an image tag
             var personImage = $("<img>");
-
-            // Giving the image tag an src attribute of a proprty pulled off the
-            // result item
-            personImage.attr("src", results[i].images.fixed_height.url);
-            personImage.attr('data-still', results[i].images.fixed_height_still.url);
-            personImage.attr('data-state', 'still');
-            personImage.addClass('gif');
-            personImage.attr('data-animate', results[i].images.fixed_height.url);
-            
             // Appending the personImage to the div 
             gifDiv.append(personImage);
             // appending rating to p
             gifDiv.append(p);
             // appends title to p2 
             gifDiv.append(p2);
+            
+            // Giving the image tag an src attribute of a proprty pulled off the
+            // result item
+            personImage.attr("src", results[i].images.fixed_height_still.url);
+            personImage.attr('data-still', results[i].images.fixed_height_still.url);
+            personImage.attr('data-state', 'still');
+            personImage.addClass('gif');
+            personImage.attr('data-animate', results[i].images.fixed_height.url);
             
             // Prepending the gifDiv to the div in the HTML
             $("#gifsView").prepend(gifDiv);
